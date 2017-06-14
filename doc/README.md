@@ -6,8 +6,8 @@ Deep Learning Utilities
 
 ## Distribution
   Creating tarball:
-  $ python setup.py sdist
+  - $ python setup.py sdist
   
   Creating whl package:
-  $ python setup.py bdist_wheel
+  - $ python setup.py bdist_wheel
  
