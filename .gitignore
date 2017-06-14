@@ -1,0 +1,4 @@
+build/*
+dist/*
+Deeputil.egg-info/*
+
