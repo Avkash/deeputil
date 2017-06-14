@@ -18,4 +18,5 @@ setup(name='Deeputil',
                     'pytest-xdist',
                     'pytest-cov'],
       },
+      keywords='deeplearning keras utilities development tools',
       packages=find_packages())
