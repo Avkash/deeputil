@@ -1,7 +1,7 @@
 # deeputil : GPU supported Deep Learning Utilities
 
 ### Image Classification Utilities
- - Ability to load VGG16, CGG19, resnet50, inception-v3, xception and pedict images from any of these models
+ - Ability to load VGG16, VGG19, resnet50, inception-v3, xception and pedict images from any of these models
  - Ability to extract featuers at any layer and any given featuremap from select layer
  - Understand the progression of learning into each network
  
