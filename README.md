@@ -9,7 +9,7 @@
 - https://pypi.python.org/pypi/nvidia-ml-py/7.352.0
 
 ### Datasets to load as Pandas dataframes
-- Deeputils comes with various pre-configured (15) datasets which you can pull with a single line of code
+- Deeputils comes with various pre-configured (20) datasets which you can pull with a single line of code
  - [ 1] Titatnic data set 
  - [ 2] US States Zipcodes
  - [ 3] Consumers Credit Cards
@@ -27,7 +27,7 @@
  - [15] Abalone 
  - [16] Arrhythmia
  - [17] Walking
- - [18] Wine classification
+ - [18] Wine quality data
  - [19] Citibike 
  - [20] Seeds Dataset
 
