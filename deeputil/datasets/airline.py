@@ -8,8 +8,8 @@ def load_airlines_base_data_as_pandas_df():
     streamData=requests.get(dataset_url).content
     pdObj=pd.read_csv(io.StringIO(streamData.decode('utf-8')))
     print("Downloaded 1.3 MB dataset with 699 and 11 columns..........")
-    assert len(pdObj) == 699
-    assert len(pdObj.columns) == 11
+    assert len(pdObj) == 27112
+    assert len(pdObj.columns) == 9
     return pdObj
 
 
