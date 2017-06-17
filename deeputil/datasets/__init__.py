@@ -14,12 +14,20 @@ from . import australia
 from . import citi_bike
 from . import chicago
 from . import higgs
+from . import coil_2000
 from . import diamonds
 from . import movies
 from . import breast_cancer
 from . import us_communities
 from . import airline
 from . import emoji
+from . import seeds
+from . import housing_prices
+from . import lending_club
+from . import airquality
+from . import walking
+
+
 
 
 

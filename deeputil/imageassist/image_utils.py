@@ -6,7 +6,6 @@ from keras.applications.imagenet_utils import preprocess_input
 import numpy as np
 import warnings
 
-
 def import_image_from_disk(imagePath, imageTargetSize, isGray= False):
     """
     :param imagePath:
