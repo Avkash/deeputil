@@ -81,7 +81,7 @@ def conv2d_bn(x,
     return x
 
 
-def get_inceptionV3_model(include_top=True,
+def InceptionV3(include_top=True,
                 weights='imagenet',
                 input_tensor=None,
                 input_shape=None,

@@ -2,7 +2,6 @@ import pandas as pd
 import io
 import requests
 
-
 def load_data_as_pandas_df():
     dataset_url = "https://raw.githubusercontent.com/Avkash/mldl/master/data/iris.csv"
     streamData=requests.get(dataset_url).content
