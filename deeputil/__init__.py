@@ -8,6 +8,9 @@ from . import datasets
 from . import modelassist
 from . import imageassist
 from . import gpu
+from . import utils
+from . import predict
+from . import definitions
 
 
 __version__ = '0.0.1'

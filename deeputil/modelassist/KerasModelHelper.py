@@ -272,12 +272,11 @@ def get_model_layer_feature_map_counts(model, model_layer_id, img_array, show_in
     :return:
     """
     assert model
-    assert type(model_layer_id) == int
     assert model_layer_id >= -1
     result = 0
     if show_info is True:
         print("Now collecting feature map for the selected layer in the given model..")
-    activation_temp = K.function([model.layers[0].input, K.learning_phase()],[model.layers[model_layer_id].output,])
+    activation_temp = K.function([model.layers[0].input, K.learning_phase()], [model.layers[model_layer_id].output, ])
     activationObj = activation_temp([img_array, 0])
     try:
         if (np.shape(activationObj[0][0][0]))[1]:
@@ -287,73 +286,143 @@ def get_model_layer_feature_map_counts(model, model_layer_id, img_array, show_in
             print("Error: Unable to get feature map from the selected layer in this model..")
     return result
 
-def get_model_layer_feature_maps(activationObj, showOnly, show_info=True):
+def get_feature_map_counts_for_all_layers(model, img_array, show_info=True):
     """
-
-    :param activationObj:
-    :param showOnly:
+    :param model:
+    :param model_layer_id:
+    :param img_array:
     :return:
     """
-    assert showOnly > 0
+    assert model
+    if show_info is True:
+        print("Now collecting feature maps for all layers in the given model..")
+
+    result_df = pd.DataFrame.empty
+
+    layer_count = len(model.layers)
+    if layer_count is 0:
+        print("Error: This model has 0 layers")
+
+    cols = ["LayerId", "FeatureMapCount"]
+    result_df = pd.DataFrame(columns=cols, index=range(layer_count))
+
+    for model_layer_id in range(layer_count):
+        activation_temp = K.function([model.layers[0].input, K.learning_phase()], [model.layers[model_layer_id].output, ])
+        activationObj = activation_temp([img_array, 0])
+        result = "NaN"
+        try:
+            if (np.shape(activationObj[0][0][0]))[1]:
+                result = (np.shape(activationObj[0][0][0]))[1]
+        except IndexError:
+            result = "NaN"
+
+        result_df.loc[model_layer_id].LayerId = model_layer_id
+        result_df.loc[model_layer_id].FeatureMapCount = result
+    if show_info is True:
+        print("Feature maps for all layers are collected.")
+
+    return result_df
+
+def display_full_feature_map_for_selected_layer_in_model(model, model_layer_id, img_array, showOnly=0, show_info=True):
+    """
+    This function generate feature map graph for each feature in the given model for selected layer
+    :param model:
+    :param layer_id:
+    :param show_info:
+    :return:
+    """
+
+    if model_layer_id > len(model.layers):
+        print("Error: The given layer id is incorrect and higher then total layers in the given model.")
+        return
+
+    if model_layer_id < 0:
+        print("Error: The given layer id is incorrect and lower then total layers in the given model.")
+        return
+
+    if show_info is True:
+        print("Now collecting feature map for the selected layer in the given model..")
+    activation_temp = K.function([model.layers[0].input, K.learning_phase()], [model.layers[model_layer_id].output, ])
+    activationObj = activation_temp([img_array, 0])
+
+    feature_map_total = 0
+    try:
+        if (np.shape(activationObj[0][0]))[2]:
+            feature_map_total = (np.shape(activationObj[0][0][0]))[1]
+    except IndexError:
+        print("Error: Layer does not have any feature maps...")
+        return
+
+    if showOnly is 0:
+        showOnly = feature_map_total
+
+    if showOnly > feature_map_total:
+        showOnly = feature_map_total
+
+    if show_info is True:
+        print("Now displaying " + str(feature_map_total) + " feature maps for the selected layer in the given model..")
 
     output_shape = np.shape(activationObj[0])
-
-    try:
-        if (np.shape(activationObj[0][0]))[2]:
-            f_map_total = (np.shape(activationObj[0][0][0]))[1]
-    except IndexError:
-        return "Layer does not have any feature maps..."
-
-    if (showOnly > f_map_total):
-        showOnly == f_map_total
-
-    print("Now showing " + str(f_map_total) + " features for this layer...")
-    if len(output_shape)==2:
-        fig=plt.figure(figsize=(16,16))
+    if len(output_shape) == 2:
+        fig = plt.figure(figsize=(16, 16))
         plt.imshow(activationObj[0].T,cmap='gray')
         plt.show()
-        #plt.savefig("featuremaps-layer-{}".format(self.layer) + '.png')
     else:
-        fig=plt.figure(figsize=(16,16))
-        subplot_num=int(np.ceil(np.sqrt(f_map_total)))
-        print("Subplot Num : " + str(subplot_num))
-        if showOnly <= 0:
-            showOnly = f_map_total
+        fig = plt.figure(figsize=(16, 16))
+        subplot_num = int(np.ceil(np.sqrt(feature_map_total)))
+        if show_info is True:
+            print("Plotting " + str(subplot_num) + " feature maps in each row.")
         for i in range(int(showOnly)):
-            ax = fig.add_subplot(subplot_num, subplot_num, i+1)
-            #ax.imshow(output_image[0,:,:,i],interpolation='nearest' ) #to see the first filter
+            loc_fmap = fig.add_subplot(subplot_num, subplot_num, i+1)
             activationObj_local = activationObj[0]
             activationObj_local = activationObj_local[0]
-            im_t = activationObj_local[0:,0:,i]
-            ax.imshow(im_t) #,cmap='gray')
+            img_local = activationObj_local[0:, 0:, i]
+            loc_fmap.imshow(img_local)
         plt.show()
+    if show_info is True:
+        print("You are watching total " + str(feature_map_total) + " features from layer #" + str(model_layer_id) + ".")
 
 
-def get_model_layer_individual_feature(activationObj, featureMapNumber, show_info=True):
+def display_individual_feature_for_selected_layer_in_model(model, model_layer_id, feature_map_id, img_array, show_info=True):
     """
 
-    :param activationObj:
-    :param featureMapNumber:
+    :param model:
+    :param model_layer_id:
+    :param img_array:
+    :param show_info:
     :return:
     """
-    assert featureMapNumber >= 0
+    if model_layer_id > len(model.layers):
+        print("Error: The given layer id is incorrect and higher then total layers in the given model.")
+        return
 
+    if model_layer_id < 0:
+        print("Error: The given layer id is incorrect and lower then total layers in the given model.")
+        return
+
+    if show_info is True:
+        print("Now collecting feature map for the selected layer in the given model..")
+    activation_temp = K.function([model.layers[0].input, K.learning_phase()], [model.layers[model_layer_id].output, ])
+    activationObj = activation_temp([img_array, 0])
+
+    feature_map_total = 0
     try:
         if (np.shape(activationObj[0][0]))[2]:
-            f_map_total = (np.shape(activationObj[0][0][0]))[1]
+            feature_map_total = (np.shape(activationObj[0][0][0]))[1]
     except IndexError:
-        return "Layer does not have any feature maps..."
+        print("Error: Layer does not have any feature maps...")
+        return
 
-    if (featureMapNumber > f_map_total):
-        print("The feature id is higher then total feature map, showing the last one - " + str(f_map_total))
-        featureMapNumber = f_map_total-1
+    if feature_map_id > feature_map_total-1:
+        print("Error: The given feature map id is incorrect and higher then total maps in the given layer.")
+        return
 
     fig=plt.figure(figsize=(8,8))
     activationObj_local = activationObj[0]
     activationObj_local = activationObj_local[0]
-    im_temp = activationObj_local[0:,0:,featureMapNumber]
-    ##print(im_temp.shape)
-    plt.imshow(im_temp) # ,cmap = 'gray')
+    im_temp = activationObj_local[0:,0:,feature_map_id]
+    plt.imshow(im_temp)
     plt.show()
 
-
+    if show_info is True:
+        print("You are watching feature map #" + str(feature_map_id) + " from the layer #" + str(model_layer_id) + ".")
