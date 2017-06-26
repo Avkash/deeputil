@@ -68,7 +68,7 @@ def perform_image_classification_by_network(image_path, network_type, top_n_clas
 
     if show_info is True:
         print("Now collecting information about selected network model..")
-    layer_count = modelassist.KerasModelHelper.get_keras_model_layers_count(model_local, show_info)
+    layer_count = modelassist.KerasModelHelper.get_model_layers_count(model_local, show_info)
     if layer_count < 0:
         print("Error: Model has 0 layers.. exiting.")
         return model_local
@@ -78,7 +78,7 @@ def perform_image_classification_by_network(image_path, network_type, top_n_clas
 
     if show_info is True:
         print("Now getting input image size from the network first layer..")
-    input_info = modelassist.KerasModelHelper.get_keras_model_input_image_shape_info(model_local, show_info)
+    input_info = modelassist.KerasModelHelper.get_model_input_image_shape_info(model_local, show_info)
 
     image_input_size = (224, 224)  # Default size
     if len(input_info) == 4:
