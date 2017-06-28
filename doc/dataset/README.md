@@ -4,7 +4,7 @@
 
 Deeputils comes with various pre-configured (20) datasets which you can pull with a single line of code
 
-- [ 1] Titatnic data set
+- [ 1] Titatnic data set [ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/Abalone_DataSet.ipynb)
 - [ 2] US States Zipcodes
 - [ 3] Consumers Credit Cards
 - [ 4] Adult census income data
