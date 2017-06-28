@@ -1,2 +1,0 @@
-# deeputil
-Deep Learning Utilities
