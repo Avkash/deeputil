@@ -11,3 +11,4 @@ Deep Learning Utilities
  - Ability to use a pre-trained network and train with new images and use for classification
 
 ## ImageNet Info
+ - [ImageNet API](https://github.com/Avkash/deeputil/blob/master/doc/models/imagenet_info.md)
