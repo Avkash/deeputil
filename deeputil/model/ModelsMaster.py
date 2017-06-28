@@ -6,6 +6,8 @@ from . import VGG19
 from . import InceptionV3
 from . import Xception
 from . import ResNet50
+from . import Mnist
+from . import Cifar10
 
 def get_vgg16_model(include_top=True, weights='imagenet',
           input_tensor=None, input_shape=None,
@@ -53,3 +55,12 @@ def get_resnet50_model(include_top=True, weights='imagenet',
     return ResNet50.ResNet50(include_top, weights, input_tensor, input_shape, pooling, classes)
 
 
+def get_mnist_model(show_info=True):
+    if show_info is True:
+        print("This pre-built MNIST model is about 20MB and will be downloaded from the internet...")
+    return Mnist.MNIST2000(show_info)
+
+def get_cifar10_model(show_info=True):
+    if show_info is True:
+        print("This pre-built CIFAR10 model is about 20MB and will be downloaded from the internet...")
+    return Cifar10.CIFAR10(show_info)

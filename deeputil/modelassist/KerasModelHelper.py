@@ -77,6 +77,47 @@ def get_model_input_image_shape_info(model, show_info=True):
     return input_shape
 
 
+def get_model_input_image_channels_is_first(model, show_info=True):
+    """
+    This function checks the image input tupple and finds out if input type is channels_first or channels_last
+    :param model: Keras Model
+    :param show_info: display debug info
+    :return: if first return 1 or if last return 3 or return 0 in case of error.
+    """
+    get_shape = get_model_input_image_shape_info(model, show_info)
+    loc_index = 0
+    if len(get_shape) is 3:
+        if show_info is True:
+            print('The Input layer ' + str(get_shape) + " shape " + str(len(get_shape)) + " is valid")
+    elif len(get_shape) is 4:
+        get_shape = get_shape[1:4]
+        if show_info is True:
+            print('The Input layer ' + str(get_shape) + " shape " + str(len(get_shape)) + " is valid")
+    else:
+        print('Error: The layer Input Shape is ' + str(get_shape) + " not valid.")
+        return loc_index
+
+    if show_info is True:
+        print('The current tuple ' + str(get_shape) + " shape is " + str(len(get_shape)) + " .")
+
+    if get_shape[0] is 1 and get_shape[1] > get_shape[0] and get_shape[2] > get_shape[0]:
+        loc_index = 1
+    elif get_shape[0] is 3 and get_shape[1] > get_shape[0] and get_shape[2] > get_shape[0]:
+        loc_index = 1
+    elif get_shape[2] is 1 and get_shape[0] > get_shape[2] and get_shape[1] > get_shape[2]:
+        loc_index = 3
+    elif get_shape[2] is 3 and get_shape[0] > get_shape[2] and get_shape[1] > get_shape[2]:
+        loc_index = 3
+
+    if show_info is True:
+        if loc_index is 3:
+            print("The image channel is last based on layer input " + str(get_shape) + ".")
+        elif loc_index is 3:
+            print("The image channel is first based on layer input " + str(get_shape) + ".")
+        else:
+            print('Error: The layer Input Shape is ' + str(get_shape) + " not valid.")
+    return loc_index
+
 def get_model_activation_obj(model, model_layer_id, img_array, show_info=True):
     """
     This function returns the activation object for the give layer id along with image to be classified
@@ -331,6 +372,8 @@ def display_full_feature_map_for_selected_layer_in_model(model, model_layer_id, 
     :param show_info:
     :return:
     """
+    ## We need to check how the input image tupple look like to display proper feature map
+
 
     if model_layer_id > len(model.layers):
         print("Error: The given layer id is incorrect and higher then total layers in the given model.")
@@ -363,7 +406,7 @@ def display_full_feature_map_for_selected_layer_in_model(model, model_layer_id, 
         print("Now displaying " + str(feature_map_total) + " feature maps for the selected layer in the given model..")
 
     output_shape = np.shape(activationObj[0])
-    if len(output_shape) == 2:
+    if len(output_shape) is 2:
         fig = plt.figure(figsize=(16, 16))
         plt.imshow(activationObj[0].T,cmap='gray')
         plt.show()

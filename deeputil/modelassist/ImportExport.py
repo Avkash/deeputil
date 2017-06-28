@@ -88,10 +88,10 @@ def import_keras_model_config_and_weight_and_compile(model_config, model_weights
     """
     model_local = Model
 
-    assert model_config
-    assert model_weights
-    assert sample_weight_mode
-    assert model_loss_weights
+    #assert model_config
+    #assert model_weights
+    #assert sample_weight_mode
+    #assert model_loss_weights
 
     # Check if given loss is part of keras.losses
     if show_info is True:
