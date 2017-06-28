@@ -7,7 +7,7 @@ Deeputils comes with various pre-configured (20) datasets which you can pull wit
 - [ 1] Titatnic data set  - [Help - Ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/TitanicList_DataSet.ipynb)
 - [ 2] US States Zipcodes - [Help - Ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/USStatesZipCodes_DataSet.ipynb)
 - [ 3] Consumers Credit Cards - [Help - Ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/CreditCardCustomers_DataSet.ipynb)
-- [ 4] Adult census income data - [Help - Ipynotebook] (https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/AdultIncomeCensus_DataSet.ipynb)
+- [ 4] Adult census income data - [Help - Ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/AdultIncomeCensus_DataSet.ipynb)
 - [ 5] Iris Flower classification - [Help - Ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/Iris_DataSet.ipynb)
 - [ 6] Chicago Crime ataset - [Help - Ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/Chicago_DataSet.ipynb)
 - [ 7] Lending club users and income - [Help - Ipynotebook](https://github.com/Avkash/deeputil/blob/master/examples/notebooks/datasets/LendingClub_DataSet.ipynb)
