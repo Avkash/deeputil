@@ -1,13 +1,7 @@
-# deeputil
-Deep Learning Utilities
+# deeputil - GPU
+GPU Support into Deep Learning Utilities
+
+### Nvidia GPU Support (Based on) ###
+- https://pypi.python.org/pypi/nvidia-ml-py/7.352.0
 
 
-# Build & Packaging
-
-## Distribution
-  Creating tarball:
-  - $ python setup.py sdist
-  
-  Creating whl package:
-  - $ python setup.py bdist_wheel
- 
