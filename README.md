@@ -3,3 +3,4 @@
  - [Prebuild Networks for Image Classification](https://github.com/Avkash/deeputil/blob/master/doc/models/README.md)
  - [Datasets within DeepUtils](https://github.com/Avkash/deeputil/blob/master/doc/dataset/README.md)
  - [GPU Utils](https://github.com/Avkash/deeputil/blob/master/doc/gpu/README.md)
+ 
