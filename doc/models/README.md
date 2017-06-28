@@ -1,7 +1,7 @@
 # deeputil
 Deep Learning Utilities
 
-### Image Classification Utilities
+## Image Classification Utilities
 
  - Ability to load VGG16, VGG19, resnet50, inception-v3, xception and pedict images from any of these models
  - Ability to extract featuers at any layer and any given featuremap from select layer
@@ -10,3 +10,4 @@ Deep Learning Utilities
  - Ability to add your own network and perform classification
  - Ability to use a pre-trained network and train with new images and use for classification
 
+## ImageNet Info
