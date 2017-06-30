@@ -3,7 +3,9 @@
 Details about the network architecture can be found in the following paper:
 
 Deep Face Recognition
+
 O. M. Parkhi, A. Vedaldi, A. Zisserman
+
 British Machine Vision Conference, 2015
 
 ## More Details:
