@@ -8,9 +8,11 @@
  - Just 1 line image classifier based on pre-built network
  - Ability to add your own network and perform classification
  - Ability to use a pre-trained network and train with new images and use for classification
+ - VGG Face Detection
 
 ## Quick Links:
  - [Prebuild Networks for Image Classification](https://github.com/Avkash/deeputil/blob/master/doc/models/README.md)
  - [Datasets within DeepUtils](https://github.com/Avkash/deeputil/blob/master/doc/dataset/README.md)
+ - [VGG Face Detection Module](https://github.com/Avkash/deeputil/blob/master/doc/models/vgg_facedetection.md)
  - [GPU Utils](https://github.com/Avkash/deeputil/blob/master/doc/gpu/README.md)
  
