@@ -6,6 +6,7 @@ import warnings
 from keras.preprocessing import image
 from keras.applications.imagenet_utils import preprocess_input
 from matplotlib import pyplot as plt
+from .. import utils
 
 def import_image_from_disk(imagePath, imageTargetSize, isGray= False, show_info=True):
     """
@@ -15,12 +16,12 @@ def import_image_from_disk(imagePath, imageTargetSize, isGray= False, show_info=
     """
     assert imagePath
     assert imageTargetSize
-    if show_info is True:
-        print("Now importing selected image from the disk...")
+
+    utils.helper_functions.show_print_message("Now importing selected image from the disk...", show_info)
     img = image.load_img(imagePath, target_size=imageTargetSize, grayscale=isGray)
     return img
 
-def is_image_gray(userImage):
+def is_image_gray(userImage, show_info=True):
     """
     :param image:
     :return:
@@ -32,8 +33,10 @@ def is_image_gray(userImage):
         raise ValueError('The given image is not a valid image...')
 
     if (img_array.shape[2]) == 1:
+        utils.helper_functions.show_print_message("Yes, the given image is gray", show_info)
         return True
     else:
+        utils.helper_functions.show_print_message("No, the given image is NOT gray", show_info)
         return False
 
 
@@ -45,8 +48,7 @@ def convert_image_array(userImage, show_info=True):
     assert userImage
     img_array = image.img_to_array(userImage)
     assert len(img_array.shape) == 3
-    if show_info is True:
-        print('Image as array shape:', img_array.shape)
+    utils.helper_functions.show_print_message("Image as array shape:", show_info)
     return img_array
 
 def preprocess_image_array(imgArray, show_info=True):
@@ -58,8 +60,7 @@ def preprocess_image_array(imgArray, show_info=True):
 
     if (imgArray.shape[2]) == 1:
         raise ValueError('Error: Preprocessing id done for color image only and input image is gray...')
-    if show_info is True:
-        print("Now preprocessing the image to get ready for classification..")
+    utils.helper_functions.show_print_message("Now pre-processing the image to get ready for classification..", show_info)
     img_array = np.expand_dims(imgArray, axis=0)
     img_array = preprocess_input(img_array)
     return img_array
@@ -72,8 +73,7 @@ def display_image_from_disk(image_path, target_size=(256, 256), show_info=True):
     :return: Display image as matplotlib graph
     """
     assert image_path
-    if show_info is True:
-        print("Now importing selected image from the disk with default size " + str(target_size) + " ...")
+    utils.helper_functions.show_print_message("Now importing selected image from the disk with default size " + str(target_size) + " ...", show_info)
     img = image.load_img(image_path, target_size)
     plt.imshow(img)
     plt.show()

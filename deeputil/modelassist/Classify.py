@@ -8,7 +8,7 @@ from keras.models import Model
 from .. import modelassist
 from .. import imageassist
 from .. import predict
-
+from .. import utils
 
 g_network_list = ["VGG16", "VGG19", "RESNET50", "INCEPTION_V3", "XCEPTION"]
 
