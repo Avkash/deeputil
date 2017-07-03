@@ -13,3 +13,6 @@
   
   Installing DeepUtils on your machine:
   - $ pip install --upgrade dist/Deeputil-0.0.1-py2.py3-none-any.whl
+
+## Future Integration Plans ##
+ - [Tensor2Tensor - A library for generalized sequence to sequence models](https://github.com/tensorflow/tensor2tensor)
