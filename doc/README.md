@@ -15,8 +15,9 @@
   - $ pip install --upgrade dist/Deeputil-0.0.1-py2.py3-none-any.whl
 
 ## Future Integration Plans ##
+ - [Artistic Style - VGG16 + Tensorflow](https://github.com/janivanecky/Artistic-Style)
  - [Keras SqueezeNet](https://github.com/rcmalli/keras-squeezenet)
- - [Keras - VGGFace](https://github.com/rcmalli/keras-vggface)
+ - [Keras - VGGFace](https://github.com/rcmalli/keras-vggface) - Done
  - [Keras MobileNet](https://github.com/rcmalli/keras-mobilenet)
  - [SqueezeNet_v1.1](https://github.com/DeepScale/SqueezeNet/tree/master/SqueezeNet_v1.1)
    - [Squeezenet Demo](https://github.com/DT42/squeezenet_demo)
