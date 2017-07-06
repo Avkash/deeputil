@@ -12,6 +12,7 @@ from . import utils
 from . import predict
 from . import definitions
 from . import vggface
+from . import cnnart
 
 __version__ = '0.0.1'
 
