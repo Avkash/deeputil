@@ -77,10 +77,10 @@ class Evaluator(object):
         return grad_values
 
 
-def createNeuralDesign(height, width, input_image_location, style_image_location, show_info=True):
+def createNeuralDesign(height, width, input_image_location, style_image_location, iteration_count, show_info=True):
     loc_image = np.random.uniform(0, 255, (1, height, width, 3)) - 128.
     # Change the iteration count
-    iterations = 1
+    iterations = iteration_count
 
     # Lets get Input Images First
     utils.helper_functions.show_print_message("Now importing selected input image from the disk...", show_info)
