@@ -15,6 +15,7 @@
   - $ pip install --upgrade dist/Deeputil-0.0.1-py2.py3-none-any.whl
 
 ## Future Integration Plans ##
+ - [TSLearn - Time Series Learn](http://tslearn.readthedocs.io/en/latest/index.html#)
  - [Artistic Style - VGG16 + Tensorflow](https://github.com/janivanecky/Artistic-Style)
  - [Keras SqueezeNet](https://github.com/rcmalli/keras-squeezenet)
  - [Keras - VGGFace](https://github.com/rcmalli/keras-vggface) - Done
@@ -26,4 +27,5 @@
  - [Image Segmentation using deconvolution layer in Tensorflow](http://cv-tricks.com/image-segmentation/transpose-convolution-in-tensorflow/)
  - [Google Inception + RESNET v2](https://github.com/transcranial/inception-resnet-v2/blob/master/inception-resnet-v2.ipynb)
  - [simdat - simple data analysis toolset](https://github.com/tammyyang/simdat/)
+ - [TF and Object Detection](https://github.com/datitran/object_detector_app)
  
